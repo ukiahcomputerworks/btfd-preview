@@ -4,6 +4,10 @@
 
 The homepage is organized as a resident-facing community resource. Emergency action comes first, followed by volunteer recruitment, department services, household preparedness, condensed burn guidance, and non-emergency station contacts. Changeable public-safety information links directly to the responsible agency.
 
+## Sibling design relationship
+
+The Township and Fire previews now use the same underlying Brooktrails concept without sharing the same implementation. Redwood and topographic geometry, focused hubs, progressive disclosure, decisive search/action paths, and the Draw → Hook → Reward rhythm establish the family resemblance. This Fire site translates those ideas into ember red, flame orange, safety gold, deep forest, and smoke. It keeps Fire urgency, imagery, forms, and task ownership distinct. See `VISUAL-SYSTEM.md` for the component profile and responsive rules.
+
 ## Regional design patterns used
 
 Regional fire-service sites consistently prioritize emergency calling, evacuation information, volunteer recruitment, defensible space, alert enrollment, burn information, and clear station contacts. They also rely on real station or apparatus imagery, compact utility navigation, dark municipal framing, and red reserved for emergency actions. The Brooktrails page synthesizes those patterns while keeping its own visual identity and original copy.
@@ -25,7 +29,7 @@ The hero uses a public 2018 exterior image of the actual Brooktrails Fire Depart
 
 ## Current resident resources
 
-- Dated CAL FIRE status for Mendocino County: Burning Suspended, effective June 15, 2026 at 8:00 AM, verified August 27, 2026.
+- Live CAL FIRE status link for Mendocino County. The preview does not restate a changing burn status as current.
 - Mendocino AQMD daily burn line: 707-463-4391.
 - MendoReady access for active incidents, evacuation orders and warnings, shelters, road closures, evacuation zones, and alert enrollment.
 - CAL FIRE status and permit access plus the AQMD daily burn line in one compact section.

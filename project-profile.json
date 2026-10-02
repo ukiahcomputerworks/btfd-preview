@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "projectId": "brooktrails-fire-department-preview-forms",
+  "linearProject": "https://linear.app/computerworksai/project/brooktrails-fire-department-website-preview-and-forms-338c2f599d64",
+  "workingRoot": "C:\\Users\\Admin\\OneDrive - CWU\\Apps\\Prospect-Web-Mockups\\btfd-preview",
+  "deliveryProfile": "public-static-site",
+  "lifecycle": "recovered-published-preview-active",
+  "productionAuthority": "authorized-public-noindex-github-pages-preview-only",
+  "selectedModules": [
+    "core-intake",
+    "content-migration",
+    "design-system",
+    "static-site",
+    "forms",
+    "accessibility",
+    "security-boundary",
+    "seo-performance",
+    "github-pages-release",
+    "prospect-preview",
+    "evidence-learning"
+  ],
+  "gateApplicability": {
+    "G0": "passed-2026-10-01-eight-of-eight-mapping-checks",
+    "G1": "pending-fire-content-and-form-inventory",
+    "G2": "recovered-fire-only-commit-1f6310e988da418dda026c8d0819de17a8a620df",
+    "G3": "passed-2026-10-01-sibling-design-system-translated-to-fire-palette",
+    "G4": "passed-2026-10-01-phone-short-laptop-and-desktop-local-browser-checks",
+    "G5": "blocked-no-sensitive-online-submission-before-fire-chief-and-secure-delivery-approval",
+    "G6": "passed-preview-no-secrets-or-operational-form-endpoint",
+    "G7": "passed-public-preview-noindex",
+    "G8": "passed-2026-10-01-recovered-exact-commit-built-on-github-pages",
+    "G9": "pending-fire-chief-and-owner-review",
+    "G10": "not-applicable-no-universal-learning-promotion-requested"
+  },
+  "exceptions": [],
+  "evidenceRoot": "C:\\Users\\Admin\\OneDrive - CWU\\Apps\\Prospect-Web-Mockups\\btfd-preview\\evidence",
+  "rollbackCommit": "1f6310e988da418dda026c8d0819de17a8a620df",
+  "siblingProjectId": "brooktrails-township-csd-redesign",
+  "updated": "2026-10-01"
+}
