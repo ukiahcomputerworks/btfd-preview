@@ -116,10 +116,24 @@ const assert=require('node:assert/strict');
   assert.ok(sweepBefore!=='none','metal sweep layer present');
   const visibleTabs=page.locator('[role=tab]');
   assert.equal(await visibleTabs.count(),3);
+  const tabImages=await page.locator('.ready-image').evaluateAll(nodes=>nodes.map(b=>{
+    const r=b.getBoundingClientRect(),i=b.querySelector('img');
+    return {top:r.top,bottom:r.bottom,left:r.left,width:r.width,height:r.height,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,fit:getComputedStyle(i).objectFit,name:i.alt};
+  }));
+  assert.equal(tabImages.length,3);
+  assert.deepEqual(tabImages.map(i=>i.naturalHeight),[147,147,145]);
+  assert.ok(tabImages.every(i=>i.naturalWidth===1024&&i.fit==='contain'&&i.height>=44));
+  assert.ok(Math.max(...tabImages.map(i=>i.height))-Math.min(...tabImages.map(i=>i.height))<1,'preparedness image heights must match');
+  assert.ok(Math.max(...tabImages.map(i=>i.width))-Math.min(...tabImages.map(i=>i.width))<1,'preparedness image widths must match');
+  if(viewport.width>880) assert.ok(tabImages.every(i=>Math.abs(i.top-tabImages[0].top)<1&&Math.abs(i.bottom-tabImages[0].bottom)<1),'preparedness row edges must align');
+  else assert.ok(tabImages.every(i=>Math.abs(i.left-tabImages[0].left)<1),'preparedness stack must align');
+  await page.locator('.ready-tabs').screenshot({path:path.join(out,'ready-images-'+viewport.width+'.png')});
   for(const key of ['home','zone','alerts']){
    await page.locator('[data-ready='+key+']').click();
    assert.equal(await page.locator('[data-ready-panel='+key+']').isVisible(),true);
    assert.equal(await page.locator('[role=tabpanel]:visible').count(),1);
+   assert.equal(await page.locator('[data-ready='+key+']').getAttribute('aria-selected'),'true');
+   assert.equal(await page.locator('[data-ready='+key+']').evaluate(e=>getComputedStyle(e,'::after').borderLeftWidth),'5px');
   }
   await page.locator('[data-ready=home]').focus();await page.keyboard.press('ArrowRight');
   assert.equal(await page.locator('[data-ready=zone]').getAttribute('aria-selected'),'true');
