@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+October 15 banner replacement: the owner-provided FindYourZone.jpg replaces only the first hero quick-action card. The unchanged 1024x190 artwork scales to its existing column width with automatic proportional height, no crop/stretch, and no duplicate text or added metallic frame. The entire image remains the same accessible MendoReady link, with visible keyboard focus. Other quick actions keep their metallic finish. Source: AI/Media/Incoming/BTFD/FindYourZone.jpg; project asset assets/find-your-zone.jpg. Phone and desktop fit verified; Township excluded.
+
 ## Sibling relationship
 
 ## October 15, 2026: Township-caliber Fire refinement

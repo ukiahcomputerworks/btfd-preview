@@ -36,7 +36,7 @@
   });
 
   document.body.classList.add('is-enhanced');
-  document.querySelectorAll('.action-deck a').forEach(node => node.classList.add('metal-edge'));
+  document.querySelectorAll('.action-deck a:not(.action-zone-image)').forEach(node => node.classList.add('metal-edge'));
 
   const tabs = [...document.querySelectorAll('[data-ready]')];
   const panels = [...document.querySelectorAll('[data-ready-panel]')];
