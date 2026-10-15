@@ -40,6 +40,32 @@ const assert=require('node:assert/strict');
   assert.ok(first.titleBottom<viewport.height,'hero title must fit first screen');
   assert.ok(first.contacts.every(h=>h>=44&&h<140),'compact usable contact rows');
   assert.ok(first.button.includes('105deg'),'metal material missing');
+  await page.locator('.path-grid').scrollIntoViewIfNeeded();
+  const paths=await page.locator('.path-image').evaluateAll(nodes=>nodes.map(a=>{
+    const r=a.getBoundingClientRect(),img=a.querySelector('img');
+    return {href:a.getAttribute('href'),top:r.top,bottom:r.bottom,left:r.left,right:r.right,width:r.width,height:r.height,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,fit:getComputedStyle(img).objectFit,loaded:img.complete};
+  }));
+  assert.equal(paths.length,4);
+  assert.deepEqual(paths.map(p=>p.href),['#prepare','#burn','#volunteer','#contact']);
+  assert.deepEqual(paths.map(p=>p.naturalHeight),[390,380,387,385]);
+  assert.ok(paths.every(p=>p.loaded&&p.naturalWidth===1024&&p.fit==='contain'&&p.height>=44));
+  assert.ok(Math.max(...paths.map(p=>p.width))-Math.min(...paths.map(p=>p.width))<1,'four image card widths must match');
+  assert.ok(Math.max(...paths.map(p=>p.height))-Math.min(...paths.map(p=>p.height))<1,'four image card heights must match');
+  if(viewport.width>=608){
+    for(const [a,b] of [[0,1],[2,3]])assert.ok(Math.abs(paths[a].top-paths[b].top)<1&&Math.abs(paths[a].bottom-paths[b].bottom)<1,'image row edges must align');
+    assert.ok(Math.abs(paths[0].left-paths[2].left)<1&&Math.abs(paths[1].right-paths[3].right)<1,'image columns must align');
+  }else assert.ok(paths.every(p=>Math.abs(p.left-paths[0].left)<1),'phone image stack left edges must align');
+  await page.locator('.path-grid').screenshot({path:path.join(out,'path-images-'+viewport.width+'.png')});
+  for(const role of ['home','burn','crew','station']){
+    const card=page.locator('.path-'+role);
+    await page.keyboard.press('Tab');
+    await card.focus();
+    assert.equal(await card.evaluate(e=>getComputedStyle(e).outlineStyle),'solid');
+    await card.click();
+    assert.equal(new URL(page.url()).hash,await card.getAttribute('href'));
+  }
+  await page.locator('.path-home').click();
+  assert.equal(await page.locator('[data-ready=home]').getAttribute('aria-selected'),'true');
   const zone=page.locator('.action-zone-image');
   const banner=await zone.locator('img').evaluate(e=>({width:e.clientWidth,height:e.clientHeight,naturalWidth:e.naturalWidth,naturalHeight:e.naturalHeight}));
   assert.equal(banner.naturalWidth,1024);assert.equal(banner.naturalHeight,190);
@@ -74,6 +100,7 @@ const assert=require('node:assert/strict');
     assert.ok(i.left+bounds[0]*s>=a.left && i.left+bounds[2]*s<=a.left+a.width,'banner text/arrow must fit horizontally');
     assert.ok(i.top+bounds[1]*s>=a.top && i.top+bounds[3]*s<=a.bottom,'banner text/arrow must fit vertically');
   }
+  await page.keyboard.press('Tab');
   await zone.focus();
   assert.equal(await zone.evaluate(e=>getComputedStyle(e).outlineStyle),'solid');
   await zone.evaluate(e=>e.blur());
