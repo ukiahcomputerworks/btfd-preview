@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+Third owner quick-link image: AI/Media/Incoming/BTFD/BurnPermits.jpg (1024x208) replaces the Burn permits / Check Current Status card. All three hero quick actions now use the same action-image role: original unedited art, full column width, native proportional height, accessible alt, visible focus and unchanged authoritative destinations. Burn keeps the CAL FIRE current-burn-status URL, not a simulated current status. Cache 20261015-4; Township untouched.
+
 Matching alerts banner: owner-provided AI/Media/Incoming/BTFD/SignUpForAlerts.jpg (1024x180) replaces only the alert quick action. Both supplied banners use the shared action-image role, full available width and automatic native-proportion height, with no crop/stretch/regenerated artwork. The alerts image keeps https://mendoready.org/plan-prepare/, accessible image text and visible focus. Cache 20261015-3. Township remains excluded.
 
 October 15 banner replacement: the owner-provided FindYourZone.jpg replaces only the first hero quick-action card. The unchanged 1024x190 artwork scales to its existing column width with automatic proportional height, no crop/stretch, and no duplicate text or added metallic frame. The entire image remains the same accessible MendoReady link, with visible keyboard focus. Other quick actions keep their metallic finish. Source: AI/Media/Incoming/BTFD/FindYourZone.jpg; project asset assets/find-your-zone.jpg. Phone and desktop fit verified; Township excluded.
