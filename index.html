@@ -11,8 +11,8 @@
   <meta property="og:description" content="Emergency information, volunteer opportunities, services, and wildfire preparedness for Brooktrails, Spring Creek, and Sylvandale.">
   <meta property="og:type" content="website">
   <title>Brooktrails Fire Department</title>
-  <link rel="stylesheet" href="styles.css?v=20261001-1">
-  <script src="script.js?v=20260827-2" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20261015-1">
+  <script src="script.js?v=20261015-1" defer></script>
 <link rel="stylesheet" href="assets/cwu-colophon.css" data-cwu-colophon="true">
 </head>
 <body>
@@ -38,9 +38,13 @@
         <span class="brand-copy"><strong>Brooktrails Fire Department</strong><small>Brooktrails Township Community Services District</small></span>
       </a>
 
-      <div class="station-utility">
-        <a href="https://www.google.com/maps/search/?api=1&amp;query=24860+Birch+Street+Willits+CA+95490" target="_blank" rel="noopener"><span>Station</span><strong>24860 Birch Street, Willits</strong></a>
-        <a href="tel:+17074594441"><span>Non-emergency</span><strong>707-459-4441</strong></a>
+      <div class="header-tools">
+        <form class="fire-search" role="search" action="#resources">
+          <label class="sr-only" for="fire-search">Search Fire and Township resources</label>
+          <span aria-hidden="true">⌕</span><input id="fire-search" name="q" type="search" placeholder="Search Fire &amp; forms" autocomplete="off" aria-controls="search-results" aria-describedby="search-help">
+          <button class="search-submit" type="submit" aria-label="Show search results">→</button>
+          <div id="search-results" class="search-results" hidden><p id="search-help">Fire resources first. Township results are labeled.</p><div data-search-matches></div><p class="sr-only" role="status" data-search-status></p></div>
+        </form>
       </div>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
@@ -55,7 +59,9 @@
         <a href="#services">Services</a>
         <a href="#prepare">Be prepared</a>
         <a href="#burn">Burn permits</a>
+        <a href="#resources">Forms &amp; resources</a>
         <a href="#contact">Contact</a>
+        <a class="sibling-nav" href="https://ukiahcomputerworks.github.io/brooktrails-township-preview/">Township site ↗</a>
       </nav>
     </div>
   </header>
@@ -65,11 +71,11 @@
       <div class="shell hero-grid">
         <div class="hero-copy hero-panel">
           <p class="eyebrow">Neighbors serving neighbors</p>
-          <h1 id="hero-title">Protecting Brooktrails, Spring Creek, and Sylvandale.</h1>
-          <p class="hero-lede">Brooktrails Fire Department provides all-risk emergency response for our wooded communities and surrounding areas of northern Mendocino County.</p>
+          <h1 id="hero-title">Ready for <em>our neighbors.</em></h1>
+          <p class="hero-lede">Fire, medical support, rescue, and prevention for Brooktrails, Spring Creek, Sylvandale, and our neighboring communities.</p>
           <div class="button-row">
-            <a class="button button--emergency" href="mailto:fireprev@btcsd.org?subject=Volunteer%20firefighter%20interest">Volunteer with us</a>
-            <a class="button button--outline" href="#prepare">Prepare your household</a>
+            <a class="button" href="#fire-paths">Find your next step →</a>
+            <a class="word-link" href="#volunteer">Volunteer with us →</a>
           </div>
         </div>
         <figure class="hero-photo">
@@ -84,6 +90,30 @@
       </div>
     </section>
 
+    <section class="section fire-paths" id="fire-paths" aria-labelledby="paths-title">
+      <div class="shell">
+        <div class="section-heading"><div><p class="eyebrow">Four ways to be ready</p><h2 id="paths-title">What brings you here?</h2></div><p>Choose a path. Get the resource, the right person, or your next practical step.</p></div>
+        <div class="path-grid">
+          <a class="path-card metal-edge path-home" href="#prepare" data-ready-target="home">
+            <svg class="path-art" viewBox="0 0 160 140" aria-hidden="true"><path class="art-shield" d="M80 8 135 29v43c0 28-23 48-55 60-32-12-55-32-55-60V29Z"/><path class="art-house" d="m44 72 36-30 36 30M54 66v38h52V66M72 104V79h16v25"/><path class="art-spark" d="m118 17 3 7 8 3-8 3-3 8-3-8-8-3 8-3Z"/></svg>
+            <span class="path-copy"><small>Start close to home</small><strong>Protect your place</strong><span>Defensible space, zones, and alerts</span><b>Build your readiness →</b></span>
+          </a>
+          <a class="path-card metal-edge path-burn" href="#burn">
+            <svg class="path-art" viewBox="0 0 160 140" aria-hidden="true"><path class="art-shield" d="M80 8 135 29v43c0 28-23 48-55 60-32-12-55-32-55-60V29Z"/><path class="art-flame" d="M80 30c8 24-12 25-6 41 5-2 9-9 10-16 24 20 30 54-3 61-38-7-39-37-19-56-2 16 6 19 10 20-7-18 13-26 8-50Z"/><path class="art-check" d="m106 98 9 9 18-21"/></svg>
+            <span class="path-copy"><small>Two checks, every time</small><strong>Before you burn</strong><span>Fire-safety status and air quality</span><b>Check both authorities →</b></span>
+          </a>
+          <a class="path-card metal-edge path-crew" href="#volunteer">
+            <svg class="path-art" viewBox="0 0 160 140" aria-hidden="true"><path class="art-helmet" d="M30 94h100l13 11H17ZM42 94V76c0-24 15-43 38-43s38 19 38 43v18M72 34V21h16v13M73 46v37h14V46Z"/><path class="art-check" d="m65 116 11 10 20-21"/><path class="art-rays" d="M20 52 8 43M140 52l12-9M80 9V2"/></svg>
+            <span class="path-copy"><small>Step into the team</small><strong>Answer the call</strong><span>Meet the volunteer opportunity</span><b>Take the first step →</b></span>
+          </a>
+          <a class="path-card metal-edge path-station" href="#contact">
+            <svg class="path-art" viewBox="0 0 160 140" aria-hidden="true"><path class="art-house" d="M18 120V53l62-28 62 28v67ZM32 120V71h40v49M88 120V71h40v49M33 83h38M33 94h38M89 83h38M89 94h38"/><path class="art-beacon" d="M73 29V16h14v13M80 6V0M63 14l-8-6M97 14l8-6"/></svg>
+            <span class="path-copy"><small>Your local station</small><strong>Talk to Fire</strong><span>Non-emergency questions and directions</span><b>Reach the right person →</b></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section community-section" id="about" aria-labelledby="about-title">
       <div class="shell community-grid">
         <div class="community-copy">
@@ -91,10 +121,10 @@
           <h2 id="about-title">Neighbors protecting neighbors.</h2>
           <p>Brooktrails Fire Department is an all-risk department serving Brooktrails, Spring Creek, Sylvandale, and nearby communities. Volunteer firefighters work alongside full-time leadership to answer calls, provide basic life support and rescue, prevent fires, and support neighboring agencies through mutual aid.</p>
         </div>
-        <aside class="recruit-card" aria-labelledby="recruit-title">
-          <p class="card-kicker">Volunteer with us</p>
-          <h3 id="recruit-title">Your community needs people who are ready to step forward.</h3>
-          <p>Volunteer firefighters train together, build practical skills, and serve the people who live beside them. If you are dependable, community-minded, and ready to learn, we would like to hear from you.</p>
+        <aside class="recruit-card" id="volunteer" aria-labelledby="recruit-title">
+          <p class="card-kicker">A place on the team</p>
+          <h3 id="recruit-title">Bring your willingness. Start a conversation.</h3>
+          <p>Train together, build practical skills, and serve your neighbors. Ask the department about the volunteer role, training, and application process.</p>
           <div class="button-row">
             <a class="button button--light" href="mailto:fireprev@btcsd.org?subject=Volunteer%20firefighter%20interest">Ask about volunteering</a>
             <a class="button button--ghost-light" href="tel:+17074594441">Call 707-459-4441</a>
@@ -106,7 +136,7 @@
     <section class="section section--dark" id="services" aria-labelledby="services-title">
       <div class="shell">
         <div class="section-heading section-heading--dark">
-          <div><p class="eyebrow eyebrow--light">Our services</p><h2 id="services-title">Ready for the calls our community faces.</h2></div>
+          <div><p class="eyebrow eyebrow--light">Our services</p><h2 id="services-title">One team. Many ways to help.</h2></div>
           <p>From urgent response to year-round prevention, our work is centered on protecting life, property, and the place we call home.</p>
         </div>
         <div class="service-grid service-grid--plain">
@@ -121,31 +151,47 @@
     <section class="section" id="prepare" aria-labelledby="prepare-title">
       <div class="shell">
         <div class="section-heading">
-          <div><p class="eyebrow">Ready before the smoke</p><h2 id="prepare-title">Simple actions can make a safer community.</h2></div>
-          <p>Prepare your property, know where you will go, and make sure official alerts can reach you before conditions change.</p>
+          <div><p class="eyebrow">Ready before the smoke</p><h2 id="prepare-title">Make your next move count.</h2></div>
+          <p>Start with your home. Know your zone. Make sure the warning reaches you.</p>
+        </div>
+        <div class="ready-tabs" aria-label="Preparedness topics" hidden data-ready-tabs>
+          <button class="metal-edge" type="button" data-ready="home" id="ready-tab-home" aria-controls="ready-home">01 Protect your home</button>
+          <button class="metal-edge" type="button" data-ready="zone" id="ready-tab-zone" aria-controls="ready-zone">02 Know your zone</button>
+          <button class="metal-edge" type="button" data-ready="alerts" id="ready-tab-alerts" aria-controls="ready-alerts">03 Get the warning</button>
         </div>
         <div class="feature-grid resident-action-grid">
-          <article class="feature-card">
+          <article class="feature-card" id="ready-home" data-ready-panel="home">
             <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5 7 14v11c0 10 6 16 17 20 11-4 17-10 17-20V14L24 5Zm-8 29c6-2 10-7 10-14 5 4 7 9 4 14-2 4-5 6-8 7"/></svg></div>
             <p class="card-kicker">Defensible space</p>
             <h3>Give your home and firefighters room to work.</h3>
             <p>Clear combustible debris, maintain vegetation, and start with the area closest to your home.</p>
             <a class="word-link" href="https://www.readyforwildfire.org/prepare-for-wildfire/defensible-space/" target="_blank" rel="noopener">Review defensible space guidance <span aria-hidden="true">↗</span></a>
           </article>
-          <article class="feature-card feature-card--warm">
+          <article class="feature-card feature-card--warm" id="ready-zone" data-ready-panel="zone">
             <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 39h34M13 35V17l11-9 11 9v18M19 35V24h10v11M5 24l19-19 19 19"/></svg></div>
             <p class="card-kicker">Evacuation zones</p>
             <h3>Know your zone before you need to leave.</h3>
             <p>Save the zones for your home, workplace, school, and family locations. If you feel unsafe, leave early.</p>
             <a class="word-link" href="https://mendoready.org/" target="_blank" rel="noopener">Find your evacuation zone <span aria-hidden="true">↗</span></a>
           </article>
-          <article class="feature-card feature-card--permit">
+          <article class="feature-card feature-card--permit" id="ready-alerts" data-ready-panel="alerts">
             <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 5c8 0 15 6 15 14v7l4 7H5l4-7v-7C9 11 16 5 24 5Zm-6 32c1 4 3 6 6 6s5-2 6-6"/></svg></div>
             <p class="card-kicker">Emergency alerts</p>
             <h3>Make sure the warning reaches you.</h3>
             <p>Register for MendoAlert and keep more than one way to receive emergency information.</p>
             <a class="word-link" href="https://mendoready.org/plan-prepare/" target="_blank" rel="noopener">Sign up for emergency alerts <span aria-hidden="true">↗</span></a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resources" aria-labelledby="resources-title">
+      <div class="shell resources-layout">
+        <div><p class="eyebrow">Forms &amp; resources</p><h2 id="resources-title">The right door. No runaround.</h2><p class="muted">Fire questions stay with Fire. District business goes next door.</p></div>
+        <div class="resource-groups">
+          <details class="resource-group metal-edge" id="volunteer-process"><summary>Volunteer applications <span>Ask about the process</span></summary><div class="resource-content"><p>Contact the department for the application and approved return method. Online application submission is not enabled on this preview.</p><a class="resource-row metal-edge" href="mailto:fireprev@btcsd.org?subject=Volunteer%20application%20request"><span><strong>Request a volunteer application</strong><small>Email the Fire Department</small></span><b aria-hidden="true">→</b></a></div></details>
+          <details class="resource-group metal-edge" id="permit-resources"><summary>Burn permits &amp; conditions <span>Official services</span></summary><div class="resource-content"><a class="resource-row metal-edge" href="https://burnpermit.fire.ca.gov/" target="_blank" rel="noopener"><span><strong>CAL FIRE burn permit service</strong><small>Opens CAL FIRE, external service</small></span><b aria-hidden="true">↗</b></a><a class="resource-row metal-edge" href="https://mcaqmd.org/burn-information/" target="_blank" rel="noopener"><span><strong>Air-quality burn information</strong><small>Opens Mendocino AQMD</small></span><b aria-hidden="true">↗</b></a><p>Fire restrictions and the daily air-quality determination must both allow burning. This preview does not issue permits or certify current conditions.</p></div></details>
+          <details class="resource-group metal-edge" id="district-resources"><summary>Township forms &amp; services <span>Continue to the Township site ↗</span></summary><div class="resource-content"><a class="resource-row metal-edge sibling-link" href="https://ukiahcomputerworks.github.io/brooktrails-township-preview/resources/"><span><strong>Find a district form or record</strong><small>Township site: water, sewer, planning, parks, and Board records</small></span><b aria-hidden="true">↗</b></a><a class="resource-row metal-edge sibling-link" href="https://ukiahcomputerworks.github.io/brooktrails-township-preview/contact/"><span><strong>Contact the District Desk</strong><small>Township site: district business and office help</small></span><b aria-hidden="true">↗</b></a></div></details>
         </div>
       </div>
     </section>
@@ -190,9 +236,9 @@
           <a class="button button--emergency" href="tel:911">Emergency: Call 911</a>
         </div>
         <address>
-          <div><span>Station</span><a href="https://www.google.com/maps/search/?api=1&amp;query=24860+Birch+Street+Willits+CA+95490" target="_blank" rel="noopener">24860 Birch Street<br>Willits, CA 95490-9475</a></div>
-          <div><span>Business office</span><a href="tel:+17074594441">707-459-4441</a></div>
-          <div><span>Email</span><a href="mailto:fireprev@btcsd.org">fireprev@btcsd.org</a></div>
+          <a class="contact-row metal-edge" href="https://www.google.com/maps/search/?api=1&amp;query=24860+Birch+Street+Willits+CA+95490" target="_blank" rel="noopener"><span>Station &amp; directions ↗</span><strong>24860 Birch Street</strong><small>Willits, CA 95490-9475</small></a>
+          <a class="contact-row metal-edge" href="tel:+17074594441"><span>Call, non-emergency →</span><strong>707-459-4441</strong></a>
+          <a class="contact-row metal-edge" href="mailto:fireprev@btcsd.org"><span>Email Fire →</span><strong>fireprev@btcsd.org</strong></a>
           <div><span>Fax</span><span>707-459-1517</span></div>
         </address>
       </div>
@@ -203,7 +249,7 @@
     <div class="shell footer-grid">
       <div><strong>Brooktrails Fire Department</strong><p>Serving Brooktrails, Spring Creek, Sylvandale, and surrounding communities in northern Mendocino County.</p></div>
       <nav aria-label="Footer navigation"><a href="#about">Who we are</a><a href="#services">Services</a><a href="#prepare">Be prepared</a><a href="#burn">Burn permits</a><a href="#contact">Contact</a></nav>
-      <div class="footer-meta"><a href="https://www.btcsd.org/" target="_blank" rel="noopener">Brooktrails Township CSD <span aria-hidden="true">↗</span></a><p>© <span data-year>2026</span> Brooktrails Fire Department</p><!-- CWU COLOPHON START -->
+      <div class="footer-meta"><a href="https://ukiahcomputerworks.github.io/brooktrails-township-preview/">Continue to the Township site <span aria-hidden="true">↗</span></a><p>© <span data-year>2026</span> Brooktrails Fire Department</p><!-- CWU COLOPHON START -->
 <div id="cwu-colophon" class="cwu-colophon" aria-label="Website Colophon">
   <span class="cwu-colophon-credit">Website By <a href="https://computerworks.ai/" class="cwu-colophon-brand">ComputerWorks.ai</a></span>
 </div>

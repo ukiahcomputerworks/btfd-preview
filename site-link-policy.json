@@ -1,0 +1,5 @@
+{
+  "blockedLegacyHosts": ["btcsd.org", "www.btcsd.org"],
+  "approvedSiblingHost": "ukiahcomputerworks.github.io",
+  "approvedSiblingPath": "/brooktrails-township-preview/"
+}
