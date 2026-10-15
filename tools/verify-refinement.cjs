@@ -59,8 +59,24 @@ const assert=require('node:assert/strict');
   assert.ok((await burn.boundingBox()).height>=44,'burn banner tap target must remain usable');
   assert.equal(await burn.getAttribute('href'),'https://burnpermit.fire.ca.gov/current-burn-status');
   assert.equal(await page.locator('.action-deck .action-image').count(),3);
+  const alignment=await page.locator('.action-deck').evaluate(e=>[...e.querySelectorAll('.action-image')].map(a=>{
+    const r=a.getBoundingClientRect(),i=a.querySelector('img').getBoundingClientRect(),img=a.querySelector('img');
+    return {top:r.top,bottom:r.bottom,left:r.left,width:r.width,height:r.height,image:{left:i.left,top:i.top,width:i.width,height:i.height,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight}};
+  }));
+  assert.ok(Math.max(...alignment.map(a=>a.height))-Math.min(...alignment.map(a=>a.height))<1,'banner frame heights must match');
+  assert.ok(Math.max(...alignment.map(a=>a.width))-Math.min(...alignment.map(a=>a.width))<1,'banner widths must match');
+  if(viewport.width>880) {
+    assert.ok(Math.max(...alignment.map(a=>a.top))-Math.min(...alignment.map(a=>a.top))<1,'desktop banner tops must align');
+    assert.ok(Math.max(...alignment.map(a=>a.bottom))-Math.min(...alignment.map(a=>a.bottom))<1,'desktop banner bottoms must align');
+  }
+  for(const [n,bounds] of [[0,[50,48,990,164]],[1,[38,40,995,160]],[2,[50,50,990,178]]]){
+    const a=alignment[n],i=a.image,s=i.width/i.naturalWidth;
+    assert.ok(i.left+bounds[0]*s>=a.left && i.left+bounds[2]*s<=a.left+a.width,'banner text/arrow must fit horizontally');
+    assert.ok(i.top+bounds[1]*s>=a.top && i.top+bounds[3]*s<=a.bottom,'banner text/arrow must fit vertically');
+  }
   await zone.focus();
   assert.equal(await zone.evaluate(e=>getComputedStyle(e).outlineStyle),'solid');
+  await zone.evaluate(e=>e.blur());
   await page.locator('.action-deck').screenshot({path:path.join(out,'zone-banner-'+viewport.width+'.png')});
   await page.screenshot({path:path.join(out,'fire-'+viewport.width+'-full.png'),fullPage:true});
   await page.locator('.button').first().focus();
