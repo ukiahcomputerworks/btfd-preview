@@ -24,6 +24,7 @@ const assert=require('node:assert/strict');
   page.on('console',e=>{if(e.type()==='error')errors.push(e.text());});
   const response=await page.goto(base+'/',{waitUntil:'networkidle'});
   assert.equal(response.status(),200);
+  assert.deepEqual(await page.locator('.primary-nav a[href^="#"]').evaluateAll(nodes=>nodes.map(a=>a.getAttribute('href'))),['#about','#services','#prepare','#resources','#burn','#contact']);
   const first=await page.evaluate(()=>({
    height:document.documentElement.scrollHeight,overflow:document.documentElement.scrollWidth>innerWidth+1,
    heroBottom:document.querySelector('.hero-grid').getBoundingClientRect().bottom,
