@@ -2,6 +2,35 @@
   const header = document.querySelector('[data-site-header]');
   const toggle = document.querySelector('[data-menu-toggle]');
   const nav = document.querySelector('[data-nav]');
+  const updates = document.querySelector('[data-updates-dropdown]');
+  const updateTrigger = updates?.querySelector('summary');
+  function positionUpdates() {
+    if (updates?.open) updates.style.setProperty('--updates-top', (updateTrigger.getBoundingClientRect().bottom + 6) + 'px');
+  }
+  if (updates) {
+    updates.addEventListener('toggle', () => {
+      positionUpdates();
+      if (updates.open) {
+        nav?.classList.remove('is-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+        const searchResults = document.querySelector('#search-results');
+        if (searchResults) searchResults.hidden = true;
+        document.querySelector('#fire-search')?.setAttribute('aria-expanded','false');
+      }
+    });
+    window.addEventListener('resize', positionUpdates);
+    document.addEventListener('click', event => {
+      if (updates.open && (!updates.contains(event.target) || event.target.closest('.updates-panel a'))) updates.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && updates.open) {
+        event.preventDefault(); updates.open = false; updateTrigger.focus();
+      }
+    });
+    updates.addEventListener('focusout', event => {
+      if (event.relatedTarget && !updates.contains(event.relatedTarget)) updates.open = false;
+    });
+  }
 
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
