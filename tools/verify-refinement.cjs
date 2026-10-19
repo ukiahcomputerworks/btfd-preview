@@ -210,6 +210,7 @@ const assert=require('node:assert/strict');
   assert.equal(await page.locator('#cwu-colophon').count(),1);
   assert.ok(await page.locator('.sibling-nav').getAttribute('href'));
   assert.equal(await page.locator('.hero .button[href="#volunteer"]').count(),1,'hero CTA points to volunteering');
+  assert.equal((await page.locator('.hero .button').textContent()).trim(),'Volunteer With Us →','hero CTA uses requested Volunteer With Us label');
   assert.equal(await page.locator('.hero .word-link').count(),0,'duplicate plain volunteer link removed');
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1),false);
   assert.deepEqual(errors,[]);
