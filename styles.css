@@ -28,7 +28,14 @@ svg,img{display:block;max-width:100%}button{cursor:pointer}button[hidden],[hidde
 .updates-dropdown>summary{cursor:pointer;list-style:none;height:100%}
 .updates-dropdown>summary::-webkit-details-marker{display:none}
 .updates-dropdown[open]>summary{background:#46150f;box-shadow:inset 0 -2px 0 var(--gold)}
-.updates-dropdown>summary.updates-image-trigger{padding:0;background:var(--forest-950);border:0;align-content:center;min-height:48px}
+.updates-dropdown>summary.updates-image-trigger{position:relative;isolation:isolate;overflow:hidden;padding:0;background:var(--forest-950);border:0;align-content:center;min-height:48px;transform-origin:center top;box-shadow:inset 0 1px 0 #fff1ba99,inset 0 -3px 0 #713e1b,0 3px 0 #371b0f;transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+.updates-image-trigger::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border:1px solid #ffd287b3;box-shadow:inset 0 2px 2px #fff2c34d,inset 0 -3px 3px #0009}
+.updates-image-trigger::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(110deg,transparent 25%,#ffc96b0a 36%,#ffe8b855 45%,#fff9dfb3 50%,#ffe8b84d 55%,transparent 67%);transform:translateX(-120%);animation:updates-glimmer 4.8s ease-in-out infinite}
+@keyframes updates-glimmer{0%,12%{transform:translateX(-120%)}42%,100%{transform:translateX(120%)}}
+.updates-dropdown>summary.updates-image-trigger:focus-visible{transform:scale(1.012,1.06);filter:brightness(1.12);box-shadow:inset 0 1px 0 #fff6d4,0 4px 0 #713e1b,0 6px 16px #ffc96b55;outline:2px solid var(--gold);outline-offset:3px}
+@media(hover:hover) and (pointer:fine){.updates-dropdown>summary.updates-image-trigger:hover{transform:scale(1.012,1.06);filter:brightness(1.12);box-shadow:inset 0 1px 0 #fff6d4,0 4px 0 #713e1b,0 6px 16px #ffc96b55}}
+.updates-dropdown>summary.updates-image-trigger:active{transform:scale(.995,.98);filter:brightness(1.03);box-shadow:inset 0 2px 5px #000b,0 1px 0 #713e1b}
+@media(prefers-reduced-motion:reduce){.updates-dropdown>summary.updates-image-trigger:hover,.updates-dropdown>summary.updates-image-trigger:focus-visible,.updates-dropdown>summary.updates-image-trigger:active{transform:none}.updates-image-trigger::after{display:none}}
 .updates-image-trigger img{width:100%;height:auto;object-fit:contain}
 .updates-image-trigger .updates-art--expanded,.updates-dropdown[open] .updates-art--collapsed{display:none}
 .updates-dropdown[open] .updates-art--expanded{display:block}
