@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+October20 selected-step reward treatment: the defensible-space result has a compact copper/gold header reading “For step01 / Your next step”, a gold left rail and a restrained raised glow. The numbered01/02/03 selectors remain visually separate from the selected result, including the phone stack. Header and image share one guidance link. Native artwork, selected-panel behavior and staggered reflection are retained. Cache20261020-6.
+
 October20 defensible-space panel: supplied DefensibleSpace.jpg replaces the home-preparedness panel's vector/text card with one full-surface guidance link. The native1024:158 artwork scales proportionally without crop, an extra frame or duplicate visible copy. Panel identity, destination and accessible content remain; hover/focus/press feedback and staggered -1.4s image glimmer apply, with static reduced motion. Cache20261020-5.
 
 October 20 completed resource headers: VolunteerApplications.jpg, BurnPermits1.jpg and TownshipForms.jpg replace all three resource disclosure summaries. One 1024:135 contain-fit role aligns complete artwork with no added outside frame and a minimum44px target. Shared glimmer, hover/focus lift, press feedback and reduced motion match the other image buttons. An inset minus covers the source plus when open; native details retains links and no-JS keyboard operation. The corrected volunteer source resolves the initial unrelated-thumbnail intake issue. Cache20261020-4 supersedes the initial two-image release20261020-3.
