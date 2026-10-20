@@ -165,7 +165,7 @@ a.metal-edge:hover,button.metal-edge:hover,details.metal-edge:has(summary:hover)
 .resource-image-group .resource-content{padding:10px;background:var(--panel)}
 .resource-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 10px;text-decoration:none;min-height:44px;margin-top:6px}
 .resource-row span{min-width:0}.resource-row strong,.resource-row small{display:block}.resource-row strong{font-size:.95rem}.resource-row small{font-size:.78rem;color:var(--smoke)}.resource-row b{color:var(--gold)}
-.contact-section{border-top:1px solid var(--line)}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.contact-grid>div>p{color:var(--smoke)}
+.contact-section{border-top:1px solid var(--line)}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.contact-grid>div>p:not(.eyebrow){color:var(--smoke)}
 .contact-grid address{display:grid;gap:8px;font-style:normal;align-items:start}.contact-row,.contact-grid address div{display:grid;gap:2px;padding:8px 12px;text-decoration:none;overflow-wrap:anywhere}
 .contact-row span,.contact-grid address div>span:first-child{color:var(--gold);font-size:.67rem;letter-spacing:.09em;font-weight:850;text-transform:uppercase}
 .contact-row strong{font-size:1.05rem}.contact-row small{color:var(--smoke);font-size:.85rem}.contact-grid address div{border-left:1px solid var(--line)}

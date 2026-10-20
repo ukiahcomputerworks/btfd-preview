@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+October20 contact eyebrow correction: contact body-copy styling excludes `.eyebrow`, allowing the shared gold color and currentColor line to match every other section label. Body copy keeps its smoke color. Cache20261020-8.
+
 October20 centered resource stack: removed the left promotional heading/description and obsolete two-column layout. All three resource image disclosures now span the centered page shell, retaining native contain-fit artwork and open/closed behavior. The section retains an accessible “Forms and resources” label. Cache20261020-7.
 
 October20 selected-step reward treatment: the defensible-space result has a compact copper/gold header reading “For step01 / Your next step”, a gold left rail and a restrained raised glow. The numbered01/02/03 selectors remain visually separate from the selected result, including the phone stack. Header and image share one guidance link. Native artwork, selected-panel behavior and staggered reflection are retained. Cache20261020-6.
