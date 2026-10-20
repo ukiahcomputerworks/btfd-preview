@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+October20 simple selected-panel separation: owner replaced the extra defensible-space header, left rail and shadow frame with a modest8px top padding below the existing12px selector margin. Native artwork, guidance destination, staggered glimmer and hover/focus remain. Supersedes the selected-step reward treatment below. Cache20261020-9.
+
 October20 contact eyebrow correction: contact body-copy styling excludes `.eyebrow`, allowing the shared gold color and currentColor line to match every other section label. Body copy keeps its smoke color. Cache20261020-8.
 
 October20 centered resource stack: removed the left promotional heading/description and obsolete two-column layout. All three resource image disclosures now span the centered page shell, retaining native contain-fit artwork and open/closed behavior. The section retains an accessible “Forms and resources” label. Cache20261020-7.
