@@ -49,9 +49,8 @@ const assert=require('node:assert/strict');
   const glimmer=await updateSummary.evaluate(el=>{const a=el.getAnimations({subtree:true}).find(a=>a.animationName==='updates-glimmer');if(!a)return null;a.pause();a.currentTime=700;const first=getComputedStyle(el,'::after').transform;a.currentTime=1500;const second=getComputedStyle(el,'::after').transform;a.play();return {first,second,events:getComputedStyle(el,'::after').pointerEvents};});
   assert.ok(glimmer&&glimmer.first!==glimmer.second&&glimmer.events==='none','moving glimmer must not intercept clicks');
   const rest=await updateSummary.boundingBox();
-  const caption=await updateSummary.locator('.updates-department').evaluate(el=>{const r=el.getBoundingClientRect(),p=el.parentElement.getBoundingClientRect();return {text:el.textContent,inside:r.top>=p.top&&r.bottom<=p.bottom&&r.right<=p.right,fits:el.scrollWidth<=el.clientWidth,font:parseFloat(getComputedStyle(el).fontSize)};});
-  assert.equal(caption.text,'Brooktrails Fire Department');
-  assert.ok(caption.inside&&caption.fits&&caption.font>=9,'department caption must be complete, readable and contained');
+  assert.equal(await updateSummary.locator('.updates-department').count(),0,'corrected owner artwork needs no caption overlay');
+  assert.ok(await updateSummary.locator('.updates-art--collapsed').evaluate(el=>{const r=el.getBoundingClientRect(),p=el.parentElement.getBoundingClientRect();return r.top>=p.top&&r.bottom<=p.bottom&&r.right<=p.right&&r.left>=p.left;}),'complete corrected banner must fit inside trigger');
   await updateSummary.screenshot({path:path.join(out,'updates-closed-'+viewport.width+'.png')});
   await page.keyboard.press('Tab');await updateSummary.focus();
   await page.waitForFunction(()=>{const el=document.querySelector('.updates-image-trigger'),m=new DOMMatrix(getComputedStyle(el).transform);return el.matches(':focus-visible')&&m.a>1.01&&m.d>1.05;});
@@ -208,6 +207,13 @@ const assert=require('node:assert/strict');
    await page.locator('[data-menu-toggle]').click();assert.equal(await page.locator('[data-nav]').isVisible(),true);
    await page.keyboard.press('Escape');assert.equal(await page.locator('[data-nav]').isVisible(),false);
   }
+  const resourceImages=await page.locator('.resource-image-summary').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),i=e.querySelector('img');return {width:r.width,height:r.height,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight,fit:getComputedStyle(i).objectFit};}));
+  assert.equal(resourceImages.length,3);assert.deepEqual(resourceImages.map(r=>r.naturalHeight),[135,127,126]);
+  assert.ok(resourceImages.every(r=>r.naturalWidth===1024&&r.fit==='contain'&&r.height>=44));
+  assert.ok(Math.max(...resourceImages.map(r=>r.width))-Math.min(...resourceImages.map(r=>r.width))<1&&Math.max(...resourceImages.map(r=>r.height))-Math.min(...resourceImages.map(r=>r.height))<1,'all three resource image frames align');
+  const shimmer=await page.locator('.burn-check-grid .button').evaluateAll(es=>es.map(e=>{const a=e.getAnimations({subtree:true}).find(a=>a.animationName==='metal-sweep');a.pause();a.currentTime=2400;const result={delay:getComputedStyle(e,'::before').animationDelay,reflection:getComputedStyle(e,'::before').transform};a.play();return result;}));
+  assert.equal(new Set(shimmer.map(s=>s.delay)).size,3,'adjacent burn buttons have staggered timing');
+  assert.equal(new Set(shimmer.map(s=>s.reflection)).size,3,'staggered timing produces different reflection positions at the same instant');
   for(const id of ['permit-resources','district-resources']){
    await page.locator('#'+id+' summary').click();
    assert.equal(await page.locator('#'+id).getAttribute('open'),'');
