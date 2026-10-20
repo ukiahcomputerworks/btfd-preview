@@ -49,6 +49,10 @@ const assert=require('node:assert/strict');
   const glimmer=await updateSummary.evaluate(el=>{const a=el.getAnimations({subtree:true}).find(a=>a.animationName==='updates-glimmer');if(!a)return null;a.pause();a.currentTime=700;const first=getComputedStyle(el,'::after').transform;a.currentTime=1500;const second=getComputedStyle(el,'::after').transform;a.play();return {first,second,events:getComputedStyle(el,'::after').pointerEvents};});
   assert.ok(glimmer&&glimmer.first!==glimmer.second&&glimmer.events==='none','moving glimmer must not intercept clicks');
   const rest=await updateSummary.boundingBox();
+  const caption=await updateSummary.locator('.updates-department').evaluate(el=>{const r=el.getBoundingClientRect(),p=el.parentElement.getBoundingClientRect();return {text:el.textContent,inside:r.top>=p.top&&r.bottom<=p.bottom&&r.right<=p.right,fits:el.scrollWidth<=el.clientWidth,font:parseFloat(getComputedStyle(el).fontSize)};});
+  assert.equal(caption.text,'Brooktrails Fire Department');
+  assert.ok(caption.inside&&caption.fits&&caption.font>=9,'department caption must be complete, readable and contained');
+  await updateSummary.screenshot({path:path.join(out,'updates-closed-'+viewport.width+'.png')});
   await page.keyboard.press('Tab');await updateSummary.focus();
   await page.waitForFunction(()=>{const el=document.querySelector('.updates-image-trigger'),m=new DOMMatrix(getComputedStyle(el).transform);return el.matches(':focus-visible')&&m.a>1.01&&m.d>1.05;});
   const raised=await updateSummary.boundingBox();
@@ -169,12 +173,19 @@ const assert=require('node:assert/strict');
   if(viewport.width>880) assert.ok(tabImages.every(i=>Math.abs(i.top-tabImages[0].top)<1&&Math.abs(i.bottom-tabImages[0].bottom)<1),'preparedness row edges must align');
   else assert.ok(tabImages.every(i=>Math.abs(i.left-tabImages[0].left)<1),'preparedness stack must align');
   await page.locator('.ready-tabs').screenshot({path:path.join(out,'ready-images-'+viewport.width+'.png')});
+  for(const tab of await visibleTabs.all()){
+   assert.equal(await tab.evaluate(e=>getComputedStyle(e).borderTopWidth),'0px','no added outer border on image tabs');
+   const normal=await tab.boundingBox();await tab.hover();await page.waitForTimeout(220);
+   const hover=await tab.boundingBox();assert.ok(hover.width>normal.width&&hover.height>normal.height,'image tab shares updates hover bulge');
+   assert.equal(await tab.evaluate(e=>getComputedStyle(e,'::after').animationName),'updates-glimmer');
+   await page.mouse.move(0,0);await page.waitForTimeout(220);
+  }
   for(const key of ['home','zone','alerts']){
    await page.locator('[data-ready='+key+']').click();
    assert.equal(await page.locator('[data-ready-panel='+key+']').isVisible(),true);
    assert.equal(await page.locator('[role=tabpanel]:visible').count(),1);
    assert.equal(await page.locator('[data-ready='+key+']').getAttribute('aria-selected'),'true');
-   assert.equal(await page.locator('[data-ready='+key+']').evaluate(e=>getComputedStyle(e,'::after').borderLeftWidth),'5px');
+   assert.equal(await page.locator('[data-ready='+key+']').evaluate(e=>getComputedStyle(e,'::before').height),'2px','selected image retains an inset light cue');
   }
   await page.locator('[data-ready=home]').focus();await page.keyboard.press('ArrowRight');
   assert.equal(await page.locator('[data-ready=zone]').getAttribute('aria-selected'),'true');
@@ -234,6 +245,9 @@ const assert=require('node:assert/strict');
  assert.equal(await reducedTrigger.evaluate(el=>getComputedStyle(el,'::after').animationName),'none');
  assert.equal(await reducedTrigger.evaluate(el=>getComputedStyle(el).transform),'none');
  assert.equal(await reducedTrigger.evaluate(el=>getComputedStyle(el,'::after').display),'none');
+ await reduced.locator('.ready-image').first().focus();
+ assert.equal(await reduced.locator('.ready-image').first().evaluate(el=>getComputedStyle(el).transform),'none');
+ assert.equal(await reduced.locator('.ready-image').first().evaluate(el=>getComputedStyle(el,'::after').display),'none');
  await reduced.close();report.reducedMotion='passed';console.error('PASS reduced motion');
  const plain=await browser.newPage({viewport:{width:390,height:844},javaScriptEnabled:false});
  await plain.goto(base+'/');
