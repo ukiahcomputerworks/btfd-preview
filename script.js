@@ -130,7 +130,7 @@
     {title:'Protect your home', href:'#ready-home', owner:'Fire Department', words:'defensible space property vegetation wildfire prevention prepare preparedness house home inspection'},
     {title:'Find your evacuation zone', href:'#ready-zone', owner:'Fire Department', words:'evacuation zone zones map route leave prepare emergency'},
     {title:'Sign up for emergency alerts', href:'#ready-alerts', owner:'Fire Department', words:'notifications alerts mendoalert warnings signup register emergency'},
-    {title:'Contact Fire or find the station', href:'#contact', owner:'Fire Department', words:'phone email address station contact directions fax office help non emergency'},
+    {title:'Contact Fire or find the station', href:'#contact', owner:'Fire Department', words:'phone email address station contact directions office help non emergency'},
     {title:'Department services', href:'#services', owner:'Fire Department', words:'response fire rescue medical ems services department about mutual aid'},
     {title:'District forms and records', href:township+'resources/', owner:'Township site ↗', words:'township district form forms application applications water sewer rental community center grove board budget records documents policy ordinance'},
     {title:'Water and sewer services', href:township+'water/', owner:'Township site ↗', words:'water sewer bill rates utility service connection leak'},
