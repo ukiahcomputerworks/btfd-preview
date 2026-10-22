@@ -4,6 +4,10 @@
   const nav = document.querySelector('[data-nav]');
   const updates = document.querySelector('[data-updates-dropdown]');
   const updateTrigger = updates?.querySelector('summary');
+  document.querySelector('[data-updates-sticker]')?.addEventListener('click', event => {
+    event.stopPropagation();
+    if (updates && updateTrigger) { updates.open = true; updateTrigger.focus(); }
+  });
   function positionUpdates() {
     if (updates?.open) updates.style.setProperty('--updates-top', (updateTrigger.getBoundingClientRect().bottom + 6) + 'px');
   }
