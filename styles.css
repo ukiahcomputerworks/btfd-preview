@@ -25,11 +25,12 @@ svg,img{display:block;max-width:100%}button{cursor:pointer}button[hidden],[hidde
 .command-link span{font-size:.62rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
 .command-link strong{font-size:.86rem;line-height:1.2}.command-link:hover{background:#030a0840}.command-link--911{background:#46070673}
 .updates-dropdown{position:relative;min-width:0}
-.updates-sticker-row{display:flex;justify-content:flex-end;padding:3px 10px 0}
 .updates-sticker{display:block;width:104px;padding:0;border:0;background:transparent;line-height:0}
 .updates-sticker img{width:100%;height:auto}
 .updates-sticker:hover{filter:brightness(1.12)}
+@media(min-width:55.01rem){.masthead-row{position:relative}.updates-sticker{position:absolute;left:30%}}
 @media(max-width:55rem){.updates-sticker{width:88px}}
+@media(max-width:24rem){.updates-sticker{width:70px}}
 .updates-dropdown>summary{cursor:pointer;list-style:none;height:100%}
 .updates-dropdown>summary::-webkit-details-marker{display:none}
 .updates-dropdown[open]>summary{background:#46150f;box-shadow:inset 0 -2px 0 var(--gold)}

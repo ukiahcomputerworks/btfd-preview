@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+October21 sticker alignment: moved the transparent CLICK HERE sticker from its own row into the masthead row beside the Fire Department brand, beneath the left side of the updates dropdown. Width104px desktop,88px phone and70px narrow phone. Existing click-to-open behavior retained. Cache20261021-2.
+
 October20 resource transition: removed the faint section divider between the preparedness result image and the resource image stack. Existing section padding and image borders remain unchanged. Cache20261020-10.
 
 October20 simple selected-panel separation: owner replaced the extra defensible-space header, left rail and shadow frame with a modest8px top padding below the existing12px selector margin. Native artwork, guidance destination, staggered glimmer and hover/focus remain. Supersedes the selected-step reward treatment below. Cache20261020-9.
