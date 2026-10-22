@@ -1,5 +1,7 @@
 # Brooktrails Fire visual system
 
+October21 decorative sticker cue: CLICK HERE is now a non-interactive sticker rather than a button or link. Its masked shimmer travels from bottom to top toward the updates dropdown, with motion removed for reduced-motion visitors. Cache20261021-3.
+
 October21 sticker alignment: moved the transparent CLICK HERE sticker from its own row into the masthead row beside the Fire Department brand, beneath the left side of the updates dropdown. Width104px desktop,88px phone and70px narrow phone. Existing click-to-open behavior retained. Cache20261021-2.
 
 October20 resource transition: removed the faint section divider between the preparedness result image and the resource image stack. Existing section padding and image borders remain unchanged. Cache20261020-10.

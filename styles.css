@@ -25,9 +25,11 @@ svg,img{display:block;max-width:100%}button{cursor:pointer}button[hidden],[hidde
 .command-link span{font-size:.62rem;font-weight:850;letter-spacing:.09em;text-transform:uppercase}
 .command-link strong{font-size:.86rem;line-height:1.2}.command-link:hover{background:#030a0840}.command-link--911{background:#46070673}
 .updates-dropdown{position:relative;min-width:0}
-.updates-sticker{display:block;width:104px;padding:0;border:0;background:transparent;line-height:0}
-.updates-sticker img{width:100%;height:auto}
-.updates-sticker:hover{filter:brightness(1.12)}
+.updates-sticker{position:relative;isolation:isolate;overflow:hidden;display:block;width:104px;padding:0;border:0;background:transparent;line-height:0;pointer-events:none}
+.updates-sticker img{display:block;width:100%;height:auto}
+.updates-sticker::after{content:"";position:absolute;inset:-55% 0;z-index:1;pointer-events:none;background:linear-gradient(0deg,transparent 38%,#fff4c000 43%,#fff4c0d9 49%,#ffffff 52%,#fff4c0d9 55%,#fff4c000 61%,transparent 66%);-webkit-mask:url("assets/click-here-sticker.png") center/contain no-repeat;mask:url("assets/click-here-sticker.png") center/contain no-repeat;transform:translateY(72%);opacity:0;animation:sticker-shimmer-up 4.8s ease-in-out infinite}
+@keyframes sticker-shimmer-up{0%,52%{transform:translateY(72%);opacity:0}58%{opacity:1}80%{transform:translateY(-72%);opacity:1}81%,100%{transform:translateY(-72%);opacity:0}}
+@media(prefers-reduced-motion:reduce){.updates-sticker::after{display:none;animation:none}}
 @media(min-width:55.01rem){.masthead-row{position:relative}.updates-sticker{position:absolute;left:30%}}
 @media(max-width:55rem){.updates-sticker{width:88px}}
 @media(max-width:24rem){.updates-sticker{width:70px}}
